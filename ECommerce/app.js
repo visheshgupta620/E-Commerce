@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+const ejsMate = require('ejs-mate');
 
+app.engine('ejs', ejsMate);
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
-
-
+app.use(express.urlencoded({extended:true}));
 
 
 const mongoose = require('mongoose');
@@ -29,13 +30,6 @@ app.get('/',(req,res)=>{
 
 const productRoutes = require('./routes/product');   //router folder me roots bnaye taki yha zada bda code na ho aur usko use krne ke liye ye
 app.use(productRoutes);
-
-
-
-
-
-
-
 
 
 const port = 5000;

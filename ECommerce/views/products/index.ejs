@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<% layout('/layout/boilerplate') -%>
+
+<section class="d-flex flex-wrap gap-3 justify-content-center">
+    <% for( let product of products ) { %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%= product.image %>" class="card-img-top" style="height: 200px;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <h5>$ <%= product.price %></h5>
+              <p class="card-text"><%= product.desc %></p>
+              <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
+            </div>
+          </div>
+    <% } %>
+</section>
