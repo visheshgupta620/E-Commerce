@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Review = require('./review');
 
 const productSchema = new mongoose.Schema({
     name:{
@@ -17,8 +18,16 @@ const productSchema = new mongoose.Schema({
     desc:{
         type:String,
         trim:true
-    }
+    },
+    reviews:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Review'
+        }
+    ]
 });
 
 const Product = mongoose.model('Product', productSchema);
+
 module.exports = Product;
+

@@ -1,0 +1,41 @@
+<% layout('/layout/boilerplate') -%>
+
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mx-auto" style="width: 20rem;">
+                <img src="<%= product.image %>" class="card-img-top" style="height: 200px;" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <h5>$ <%= product.price %></h5>
+                  <p class="card-text"><%= product.desc %></p>
+                  <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
+                  <a href="#" class="btn btn-sm btn-secondary">Add to Cart</a>
+                  <a href="/products/<%= product._id %>/edit" class="btn btn-sm btn-success">Edit</a>
+                  <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-6">
+                <h2>Reviews</h2>
+                <form action="/products/<%= product._id %>/review" method="POST">
+                    <p>Rating: </p>
+                    <input class="form-control" name="rating" type="range" min="0" max="5">
+                    <textarea class="form-control" name="comment" id="" cols="30" rows="3"></textarea>
+                    <button class="btn btn-sm btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <% for( let review of product.reviews ) { %>
+                <div class="card w-50">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= review.rating %></h5>
+                      <p class="card-text"><%= review.comment %></p>
+                      <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>

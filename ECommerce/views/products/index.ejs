@@ -8,7 +8,7 @@
               <h5 class="card-title"><%= product.name %></h5>
               <h5>$ <%= product.price %></h5>
               <p class="card-text"><%= product.desc %></p>
-              <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
+              <a href="/products/<%= product._id %>" class="btn btn-sm btn-primary">Buy Now</a>
             </div>
           </div>
     <% } %>
