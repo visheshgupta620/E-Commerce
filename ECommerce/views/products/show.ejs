@@ -5,33 +5,25 @@
             <div class="card mx-auto" style="width: 20rem;">
                 <img src="<%= product.image %>" class="card-img-top" style="height: 200px;" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">
-                        <%= product.name %>
-                    </h5>
-                    <h5>$ <%= product.price %>
-                    </h5>
-                    <p class="card-text">
-                        <%= product.desc %>
-                    </p>
-                    <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
-                    <a href="#" class="btn btn-sm btn-secondary">Add to Cart</a>
-                    <a href="/products/<%= product._id %>/edit" class="btn btn-sm btn-success">Edit</a>
-                    <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger btn-sm">Delete</button>
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <h5>$ <%= product.price %></h5>
+                  <p class="card-text"><%= product.desc %></p>
+                  <a href="#" class="btn btn-sm btn-primary">Buy Now</a>
+                  <a href="#" class="btn btn-sm btn-secondary">Add to Cart</a>
+                  <a href="/products/<%= product._id %>/edit" class="btn btn-sm btn-success">Edit</a>
+                  <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </div>
-            </div>
+              </div>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <div class="col-lg-6">
-                <h2>Reviews</h2>
-                <form action="/products/<%= product._id %>/review" method="POST">
-                    <!-- <p>Rating: </p>-->
+            <div class="col-lg-6 mx-auto">
+                <h2 class="display-6">Reviews</h2>
 
-                    <fieldset class="starability-basic"> <!-- //starability github -->
-                        <legend>First rating:</legend>
-                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
-                            aria-label="No rating." />
+                <form action="/products/<%= product._id %>/review" method="POST">
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
                         <input type="radio" id="first-rate1" name="rating" value="1" />
                         <label for="first-rate1" title="Terrible">1 star</label>
                         <input type="radio" id="first-rate2" name="rating" value="2" />
@@ -43,27 +35,22 @@
                         <input type="radio" id="first-rate5" name="rating" value="5" />
                         <label for="first-rate5" title="Amazing">5 stars</label>
                     </fieldset>
-
-                    <!-- <input class="form-control" name="rating" type="range" min="0" max="5"> -->
                     <textarea class="form-control" name="comment" id="" cols="30" rows="3"></textarea>
-                    <button class="btn btn-sm btn-primary">Submit</button>
+                    <button class="btn btn-sm btn-primary my-2">Submit</button>
                 </form>
             </div>
 
             <% for( let review of product.reviews ) { %>
-                <div class="card w-50">
+                <div class="card w-50 mx-auto mb-2">
                     <div class="card-body">
-                        <!-- <h5 class="card-title"><%= review.rating %></h5>    commented hai ye line  -->
                         <p class="starability-result" data-rating="<%= review.rating %>">
-                            <!-- Rated: 3 stars -->
-                        </p>
-
-                        <p class="card-text">
-                            <%= review.comment %>
-                        </p>                       
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            Rated: 3 stars
+                          </p>
+                      <!-- <h5 class="card-title"><%= review.rating %></h5> -->
+                      <p class="card-text"><%= review.comment %></p>
+                      <a href="#" class="btn btn-danger btn-sm">Delete</a>
                     </div>
                 </div>
-                <% } %>
+            <% } %>
         </div>
     </div>
