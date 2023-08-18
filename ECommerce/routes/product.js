@@ -52,7 +52,7 @@ router.patch('/products/:id', validateProduct, async (req, res) => {
 
     await Product.findByIdAndUpdate(id, { name, image, price, desc });
 
-    req.flash('success', 'Changes saved!');
+    req.flash('success', 'Changes saved !');
     res.redirect(`/products/${id}`);
 });
 

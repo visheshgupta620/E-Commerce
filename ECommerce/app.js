@@ -28,7 +28,7 @@ app.use(session({                           //session kyunki flash tbhi work krt
 
 app.use(flash());                          //session ke baad hi chlega ye
 
-app.use((req, res, next)=>{                //middleware  //local use krna pdta success ko access krne ke liye
+app.use((req, res, next)=>{                //middleware  //sessions ko ejs me use krne ke liye locals use krte
     res.locals.success = req.flash('success');
     next();
 })
