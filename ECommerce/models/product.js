@@ -19,15 +19,22 @@ const productSchema = new mongoose.Schema({
         type:String,
         trim:true
     },
+    avgRating: {
+        type: Number,
+        default: 0
+    },
     reviews:[
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:'Review'
         }
-    ]
+    ],
+    author:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    }
 });
 
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
-

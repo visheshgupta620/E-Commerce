@@ -1,8 +1,11 @@
+require('dotenv').config();
 const Product = require('./models/product');
 const Review =  require('./models/review');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/e-com-db')
+const db_URL = process.env.DB_URL;
+
+mongoose.connect(db_URL)
     .then(()=>{console.log('e-com-db connected!!')})
     .catch((err) => console.log(err));
 
