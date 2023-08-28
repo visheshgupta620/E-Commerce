@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
-    function (req, res) {
+    (req, res) => {
         req.flash('success', `Welcome, ${req.user.username}!`);
         res.redirect('/products');
     });

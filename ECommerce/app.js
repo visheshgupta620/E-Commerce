@@ -41,7 +41,7 @@ app.use(methodOverride('_method'));
 
 app.use(session({
     store: MongoStore.create({ mongoUrl: db_url }),
-    secret:secret,
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie:{

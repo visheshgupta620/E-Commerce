@@ -8,8 +8,8 @@ async function likeProduct(productId, btn) {
             headers: {'X-Requested-With': 'XMLHttpRequest'}
         });
     
-        // console.log(res);
-        console.log(btn);
+        console.log(res);
+        // console.log(btn);
         if(btn.classList.contains('fa-regular')){
             btn.classList.remove('fa-regular');
             btn.classList.add('fa-solid');

@@ -3,7 +3,7 @@ const Product = require('../models/product')
 module.exports.showAllProducts = async (req, res) => {
     try {
         const products = await Product.find({});
-        console.log(req.session);
+        // console.log(req.session);
         res.render('products/index', { products });
     } 
     catch (e) {

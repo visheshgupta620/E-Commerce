@@ -1,11 +1,12 @@
 require('dotenv').config();
 const Product = require('./models/product');
 const Review =  require('./models/review');
+const User = require('./models/user');
 const mongoose = require('mongoose');
 
-const db_URL = process.env.DB_URL;
+const db_url = process.env.DB_URL;
 
-mongoose.connect(db_URL)
+mongoose.connect(db_url)
     .then(()=>{console.log('e-com-db connected!!')})
     .catch((err) => console.log(err));
 
@@ -56,7 +57,8 @@ const dummy_data = [
 
 
 async function seedData(){
-    // await Review.deleteMany({});
+    await Review.deleteMany({});
+    await User.deleteMany({});
     await Product.deleteMany({});
     await Product.create(dummy_data);
     console.log('DB seeded!');

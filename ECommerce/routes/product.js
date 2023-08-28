@@ -20,7 +20,7 @@ router.route('/:id')
     .patch(isLoggedIn, isSeller, validateProduct, editProduct)
     .delete(isLoggedIn, isSeller, isAuthor, deleteProduct)
 
-router.get('/new', isLoggedIn, isSeller, productForm);
+router.get('/product/new', isLoggedIn, isSeller, productForm);
 
 router.get('/:id/edit', isLoggedIn, isSeller, isAuthor, editProductForm);
 

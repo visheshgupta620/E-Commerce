@@ -2,8 +2,8 @@
 const btn = document.querySelector('#buy-btn');
 
 
-async function makeOrder(amount) {
-    try {
+async function makeOrder(amount) {                 //jitni bhi ajax (axios etc) request use kri humne sab hi frontend ki js me use kr rhe
+    try {                                          //because nodejs me fetch ya document api i.e. aise requests nhi bhej skte                        
         const res = await axios({
             method: 'post',
             data: { amount },
@@ -19,7 +19,7 @@ async function makeOrder(amount) {
             "currency": "INR",
             "name": "Ecommerce Corp",
             "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
+            "image": "https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZWNvbW1lcmNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
             "order_id": res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": "http://localhost:5000/payment-verify/",
             "notes": {

@@ -5,7 +5,7 @@
 <section class="d-flex flex-wrap justify-content-center">
     <% for( let product of products ) { %>
         <div class="card mx-2 mb-4" style="width: 18rem;">
-            <img src="<%= product.image %>" class="card-img-top" style="height: 200px;" alt="...">
+            <img src="<%= product.image %>" class="card-img-top" style="height: 200px;" alt="img">
             <span class="badge text-bg-light position-absolute " style="top:34%; left:5%">
               <%= product.avgRating %> &star; | <%= product.reviews.length %>
             </span>

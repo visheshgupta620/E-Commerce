@@ -27,5 +27,25 @@ router.post('/products/:productId/review', isLoggedIn, async (req, res)=>{
     res.redirect('back')
 });
 
+router.delete('/products/:productId/:reviewId/remove',async(req,res)=>{
+    const {productId} = req.params;
+    const {reviewId} = req.params;
+    const product =await Product.findById(productId);
+    const rev = await Review.findById(reviewId);
+    await Review.findByIdAndDelete(reviewId);
+    var i=0;
+    for(let review of product.reviews){
+        if(review._id.equals(rev._id)){
+            product.reviews.splice(i,1);
+            break;
+        }
+        i++;
+    }
+    await product.save();
+
+    req.flash('success','Review Deleted Successfully!');
+    res.redirect('back');
+})
+
 
 module.exports = router;
