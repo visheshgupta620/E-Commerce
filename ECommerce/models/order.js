@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     }
-}, {timestamps:true})
+}, {timestamps:true})         //timestamps store hojayenge ye likhne se
 
 const Order = mongoose.model('Order', orderSchema);
 
