@@ -4,7 +4,7 @@ const btn = document.querySelector('#buy-btn');
 
 async function makeOrder(amount) {                 //jitni bhi ajax (axios etc) request use kri humne sab hi frontend ki js me use kr rhe
     try {                                          //because nodejs me fetch ya document api i.e. aise requests nhi bhej skte   
-        
+
         const keyres = await axios.get('/keyid');
         // console.log(keyres);
 
@@ -14,11 +14,10 @@ async function makeOrder(amount) {                 //jitni bhi ajax (axios etc) 
             url: `/order`,
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
         });
-
         console.log(res.data.order.amount);
 
         const options = {
-            "key":keyres.data.keyid, // Enter the Key ID generated from the Dashboard
+            "key": keyres.data.keyid, // Enter the Key ID generated from the Dashboard
             "amount": res.data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
             "name": "Ecommerce Corp",
@@ -35,7 +34,7 @@ async function makeOrder(amount) {                 //jitni bhi ajax (axios etc) 
         };
         var rzp1 = new Razorpay(options);
         rzp1.open();
-    } 
+    }
     catch (e) {
         window.location.replace('/login');
     }

@@ -3,41 +3,55 @@
   <section>
     <div class="row">
       <div class="col-lg-8">
-        <% for( let item of cart ) { %>
-          <div class="card mb-3" style="max-width: 500px;">
-            <div class="row g-0">
-              <div class="col-md-4 col-4">
-                <img src="<%= item.productId.image %>" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8 col-8">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <%= item.productId.name %>
-                  </h5>
-                  <p class="card-text">
-                    <%= item.productId.desc %>
+        <% if (cart.length==0) { %>
+          <div class="d-flex flex-column align-items-center mt-5">
+          <h1 class="fw-bold text-danger">Cart is Empty</h1>
+          <br><br>
+          <h2>Add items to Cart : <a class="text-decoration-none" href="/products">Products </a></h2>
+          <br><br>
+        </div>
+          
+
+
+          <% } else{ %>
+
+            <% for( let item of cart ) { %>
+              <div class="card mb-3" style="max-width: 500px;">
+                <div class="row g-0">
+                  <div class="col-md-4 col-4">
+                    <img src="<%= item.productId.image %>" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8 col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= item.productId.name %>
+                      </h5>
+                      <p class="card-text">
+                        <%= item.productId.desc %>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center" style="margin-left: 30px; margin-bottom: 10px;">
+                      <div>
+                        <form class="d-inline" action="/user/<%= item.productId._id %>/cart/remove" method="post">
+                          <button class="btn btn-sm bg-primary text-white">-</button>
+                        </form>
+                      </div>
+                      <div>
+                        <span>
+                          <%= item.quantity %>
+                        </span>
+                      </div>
+                      <div>
+                        <form class="d-inline" action="/user/<%= item.productId._id %>/cart/add" method="post">
+                          <button class="btn btn-sm bg-primary text-white">+</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="d-flex gap-3 align-items-center" style="margin-left: 30px; margin-bottom: 10px;">
-                  <div>
-                    <form class="d-inline" action="/user/<%= item.productId._id %>/cart/remove" method="post">
-                      <button class="btn btn-sm bg-primary text-white">-</button>
-                    </form>
-                  </div>
-                  <div>
-                    <span>
-                      <%= item.quantity %>
-                    </span>
-                  </div>
-                  <div>
-                    <form class="d-inline" action="/user/<%= item.productId._id %>/cart/add" method="post">
-                      <button class="btn btn-sm bg-primary text-white">+</button>
-                    </form>
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
-          <% } %>
+              <% } %>
+                <% } %>
+
       </div>
 
       <div class="col-lg-4">
@@ -51,8 +65,13 @@
             <% } %>
 
               <li class="list-group-item "> <span class="fw-bold">Total - <span id="amount-display">$ <%= totalbill %>
-                      </span></span></li>
-              <button id="buy-btn" class="bg-primary text-white p-3 border border-none m-5 mt-3" style="border-radius: 10px;">Pay Now</button>
+                  </span></span></li>
+
+              <% if (cart.length!==0) { %>
+                <button id="buy-btn" class="bg-primary text-white p-3 border border-none m-5 mt-3"
+                  style="border-radius: 10px;">Pay Now</button>
+                <% } %>
+
         </ul>
       </div>
     </div>
