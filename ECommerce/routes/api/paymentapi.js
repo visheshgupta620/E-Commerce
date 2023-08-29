@@ -7,6 +7,11 @@ const { validatePaymentVerification } = require('razorpay/dist/utils/razorpay-ut
 const {isLoggedIn} = require('../../middlewares');
 const {RAZORPAY_KEY_ID, RAZORPAY_SECRET_KEY} = process.env;
 
+router.get('/keyid',isLoggedIn,(req,res)=>{
+    res.json({
+        keyid:RAZORPAY_KEY_ID
+    })
+})
 
 router.post('/order', isLoggedIn, async (req, res) => {
     const instance = new Razorpay({ key_id: RAZORPAY_KEY_ID, key_secret: RAZORPAY_SECRET_KEY })
