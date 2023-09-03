@@ -1,6 +1,6 @@
 <% layout('/layout/boilerplate') -%>
 
-    <form action="/products/<%= product._id %>?_method=PATCH" method="post" class="mx-auto needs-validation" style="width: 600px;" novalidate>
+    <form action="/products/<%= product._id %>?_method=PATCH" method="post" class="mx-auto needs-validation" style="width: 50%;" novalidate>
         <div class="mb-3">
             <label for="productname" class="form-label">Product Name:</label>
             <input required value="<%= product.name %>" name="name" type="text" class="form-control" id="productname" aria-describedby="emailHelp">
